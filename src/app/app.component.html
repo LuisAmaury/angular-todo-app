@@ -1,0 +1,23 @@
+<div class="container">
+  <!-- Form agarra el name de los inputs para asignar el id del objeto que retorna -->
+    <form #todoForm= "ngForm" (submit)="todoSubmit(todoForm.value); todoForm.resetForm()" >
+    <div class="form-group">
+      <h1 class="text-center text-primary"> Todo-App</h1>
+      <div class="input-group-prepend">
+        <input #todo type="text" class="form-control" 
+          placeholder="Add Todo" name="todo"
+          ngModel>
+          <span class="input-group-text btn" (click)="addTodo(todo.value)">
+              <i class="material-icons">add</i>
+          </span>
+      </div>
+      <div class="data">
+          <ul class="list-instyled">
+            <li *ngFor="let todo of todoArray">{{ todo }}
+              <i (click)="deleteItem(todo)" class="material-icons"> delete</i>
+            </li>
+          </ul>
+        </div>
+    </div>
+  </form>
+</div>
